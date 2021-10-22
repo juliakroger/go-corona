@@ -1,0 +1,42 @@
+.header {
+  margin-right: 295px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px 20px 52px;
+
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
+  }
+
+  &--links {
+    display: flex;
+
+    .link {
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0px 20px;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+    }
+
+    .link:hover {
+      color: $red;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: $red;
+  font-size: 18px;
+
+  .go {
+    padding-left: 8px;
+    color: $font-color;
+  }
+}

@@ -1,0 +1,130 @@
+.download {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    height: 800px;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    text-align: center;
+  }
+
+  .title {
+    padding-top: 80px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 126%;
+
+    .healthcare {
+      color: $red;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 40px;
+    }
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: $grey;
+    letter-spacing: 0.08em;
+    max-width: 600px;
+    padding-top: 12px;
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+      width: 90%;
+    }
+
+    .card {
+      width: 278.17px;
+      height: 250px;
+      background: #ffffff;
+      box-shadow: 0px 4px 18px rgba(88, 126, 236, 0.18);
+      border-radius: 8px;
+      margin: 36px;
+      padding: 36px 17px;
+
+      @media (max-width: $breakpoint-tablet) {
+        height: auto;
+        margin: 10px 36px;
+      }
+
+      @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+        width: auto;
+      }
+
+      .image {
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100px;
+          height: max-content;
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+          display: none;
+        }
+      }
+
+      .card-title {
+        padding-top: 28px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 138.5%;
+        text-align: center;
+        letter-spacing: 0.08em;
+
+        @media (max-width: $breakpoint-tablet) {
+          padding-top: 0;
+        }
+      }
+
+      .card-subtitle {
+        padding-top: 5px;
+        font-size: 12px;
+        text-align: center;
+        letter-spacing: 0.08em;
+        color: $grey;
+      }
+    }
+  }
+
+  .download-store-row {
+    margin-top: 40px;
+    display: flex;
+  }
+
+  .download-store-button {
+    width: 160.04px;
+    border-radius: 9px;
+    margin: 0px 26px;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 120px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+// @media (max-width: $breakpoint-mobile) {
+//   height: 800px;
+// }

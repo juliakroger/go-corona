@@ -1,0 +1,42 @@
+$background: #fafbfd;
+$font-color: #000000;
+$font-white-color: #fcfdfe;
+$red: #ec5863;
+$blue: #4285f4;
+$grey: #616161;
+$white: #ffffff;
+
+$breakpoint-tablet: 850px;
+$breakpoint-mobile: 480px;
+
+@import "./header.scss";
+@import "./home.scss";
+@import "./features.scss";
+@import "./support.scss";
+@import "./download.scss";
+
+html {
+  font-family: "Avenir Next", -apple-system, "Helvetica Neue", sans-serif;
+  background-color: $background;
+  color: $font-color;
+}
+
+button {
+  font-family: "Avenir Next", -apple-system, "Helvetica Neue", sans-serif;
+}
+
+.default-button {
+  margin-top: 24px;
+  width: 144px;
+  height: 40px;
+  background: $red;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  color: $font-white-color;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}

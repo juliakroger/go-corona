@@ -1,0 +1,31 @@
+.features {
+  background-color: $white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 800px;
+  .image {
+    padding-right: 149px;
+    padding-left: 100px;
+    width: 410px;
+  }
+
+  .title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 126%;
+
+    .corona {
+      color: $red;
+    }
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: $grey;
+    letter-spacing: 0.08em;
+    width: 363px;
+    padding-top: 12px;
+  }
+}
