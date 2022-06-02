@@ -29,4 +29,7 @@ jobs:
         with:
           title: "build(deps): Upgrade NPM packages (automated)"
           branch: "build-deps-upgrade-npm-packages-automated"
+          base: "main"
           commit-message: "build(deps): upgrade NPM packages (automated)"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          delete-branch: true
