@@ -20,8 +20,11 @@ jobs:
         with:
           node-version: "12.x"
           
-      - name: Upgrade packages
+      - name: Run CI
         run: npm ci
+        
+      - name: Upgrade packages 🔀
+        run: npm update
           
 #       - name: Self-hosted Renovate
 #         uses: renovatebot/github-action@v32.0.1
