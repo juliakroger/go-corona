@@ -2,10 +2,8 @@ name: Renovate
 on:
   workflow_dispatch:
   
-  schedule:
-    # The "*" (#42, asterisk) character has special semantics in YAML, so this
-    # string has to be quoted.
-    - cron: '0/30 * * * *'
+#   schedule:
+#     - cron: '0/30 * * * *'
 jobs:
   renovate:
     runs-on: ubuntu-latest
@@ -23,7 +21,7 @@ jobs:
           node-version: "16.x"
           
       - name: Upgrade packages
-        run: npm upgrade
+        run: npm i
           
 #       - name: Self-hosted Renovate
 #         uses: renovatebot/github-action@v32.0.1
