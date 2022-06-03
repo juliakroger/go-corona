@@ -12,12 +12,12 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+        uses: actions/checkout@v2.0.0
         
       - name: Setup node
-        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3.2.0
+        uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: "16.x"
           
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.0.1
@@ -26,13 +26,18 @@ jobs:
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
           LOG_LEVEL: 'debug'
-    
-      - name: Install project
-        run: npm ci --ignore-scripts
-      - name: Build
-        run: npm run build
-      - name: Renovate
-        uses: renovatebot/github-action@6030949931ad2285e5e0fbe5101c2052c540262c # tag=v26.21.7
+          
+          
+      - name: Get token
+        id: get_token
+        uses: machine-learning-apps/actions-app-token@master
         with:
-          configurationFile: dist/src/renovate-config.js
-          token: ${{ secrets.RENOVATE_TOKEN }}
+          APP_PEM: ${{ secrets.APP_PEM }}
+          APP_ID: ${{ secrets.APP_ID }}
+
+
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v32.0.1
+        with:
+          configurationFile: example/renovate-config.js
+          token: 'x-access-token:${{ steps.get_token.outputs.app_token }}'
