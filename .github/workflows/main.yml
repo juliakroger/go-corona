@@ -27,7 +27,7 @@ jobs:
         AUTHOR_EMAIL: renovatebot@example.com
         AUTHOR_NAME: Renovate Bot
         EXECUTE: "true"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
         LOG_LEVEL: debug
       with:
         args: -u --packageFile package.json --loglevel verbose
