@@ -1,27 +1,26 @@
-name: CI
+name: CI Update
 on:
-#   push:
-#     branches: [ main ]
-    
-#   schedule:
-#     - cron: "0 0 * * *"
-
   workflow_dispatch:
-
+  schedule:
+  - cron: "0 0 * * 3"
+  
 jobs:
   package-update:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: set remote url
-      run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Checkout
+      uses: actions/checkout@v2.0.0
+      with:
+       token: ${{ secrets.RENOVATE_TOKEN }}
+       repository: juliakroger/go-corona
+          
     - name: package-update
       uses: taichi/actions-package-update@master
       env:
         AUTHOR_EMAIL: john@example.com
         AUTHOR_NAME: john
         EXECUTE: "true"
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RENOVATE_TOKEN }}
         LOG_LEVEL: debug
       with:
         args: -u --packageFile package.json --loglevel verbose
