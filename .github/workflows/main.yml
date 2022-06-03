@@ -31,15 +31,25 @@ jobs:
         with:
           node-version: "16.x"
           
-      - name: Run the Action
-        if: startsWith(github.ref, 'refs/heads/feature')
-        uses: devops-infra/action-pull-request@v0.4.2
+      - name: Upgrade packages
+        run: npm update
+        
+      - name: Commit and create PR
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          title: "CI"
-          assignee: ${{ github.actor }}
-          label: automatic,feature
-          template: .github/PULL_REQUEST_TEMPLATE/FEATURE.md
-          old_string: "CI description"
-          new_string: "CI description"
-          get_diff: true
+          title: 'build(deps): Upgrade NPM packages (automated)'
+          branch: 'build-deps-upgrade-npm-packages-automated'
+          commit-message: 'build(deps): upgrade NPM packages (automated)'
+          
+#       - name: Run the Action
+#         if: startsWith(github.ref, 'refs/heads/feature')
+#         uses: devops-infra/action-pull-request@v0.4.2
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           title: "CI"
+#           assignee: ${{ github.actor }}
+#           label: automatic,feature
+#           template: .github/PULL_REQUEST_TEMPLATE/FEATURE.md
+#           old_string: "CI description"
+#           new_string: "CI description"
+#           get_diff: true
