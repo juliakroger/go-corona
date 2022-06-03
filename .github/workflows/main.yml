@@ -1,72 +1,27 @@
 name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
     
   schedule:
     - cron: "0 0 * * *"
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-permissions: write-all
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
   package-update:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: set remote url
-      run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-    
+      run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.TOKEN }}@github.com/$GITHUB_REPOSITORY
     - name: package-update
       uses: taichi/actions-package-update@master
       env:
-        AUTHOR_EMAIL: renovatebot@example.com
-        AUTHOR_NAME: Renovate Bot
+        AUTHOR_EMAIL: john@example.com
+        AUTHOR_NAME: john
         EXECUTE: "true"
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         LOG_LEVEL: debug
       with:
         args: -u --packageFile package.json --loglevel verbose
-  # This workflow contains a single job called "build"
-#   build:
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
-
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 0
-          
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: "16.x"
-          
-#       - name: Upgrade packages
-#         run: npm update
-        
-#       - name: Commit and create PR
-#         uses: peter-evans/create-pull-request@v3
-#         with:
-#           title: 'build(deps): Upgrade NPM packages (automated)'
-#           branch: 'build-deps-upgrade-npm-packages-automated'
-#           commit-message: 'build(deps): upgrade NPM packages (automated)'
-          
-#       - name: Run the Action
-#         if: startsWith(github.ref, 'refs/heads/feature')
-#         uses: devops-infra/action-pull-request@v0.4.2
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           title: "CI"
-#           assignee: ${{ github.actor }}
-#           label: automatic,feature
-#           template: .github/PULL_REQUEST_TEMPLATE/FEATURE.md
-#           old_string: "CI description"
-#           new_string: "CI description"
-#           get_diff: true
